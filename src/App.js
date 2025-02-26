@@ -3,6 +3,7 @@ import './App.css';
 import React, { useState, useEffect} from "react";
 import DurationExercise from './components/DurationExercise';
 import RepetitionExercise from './components/RepetitionExercise';
+import RunningExercise from './components/RunningExercise';
 
 function App() {
   const [selectedExercise, setSelectedExercise] = useState(null);
@@ -23,12 +24,16 @@ function App() {
           <button onClick={() => setSelectedExercise("Weights")}>
             Weight (Repetitions)
           </button>
+          <button onClick={() => setSelectedExercise("Running")}>
+            Running (Laps)
+          </button>
         </div>
       ) : (
         <div>
           {((selectedExercise === "Push-ups") || (selectedExercise === "Weights")) ? (
             <RepetitionExercise name={selectedExercise} />
-            
+          ) : selectedExercise === "Running" ? (
+            <RunningExercise name="Running" />
           ) : (
             <DurationExercise name={selectedExercise} />
           )}
